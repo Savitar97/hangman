@@ -18,6 +18,7 @@ import java.awt.*;
 
 public class GameController {
     private String nickName;
+    private String themeName;
     @FXML
     private Label nicknameLabel;
 
@@ -25,5 +26,10 @@ public class GameController {
     this.nickName=nickName;
         nicknameLabel.setText("Hi,"+nickName+"!");
         System.out.println(this.nickName);
+    }
+
+    public void setChoice(Object value) {
+    themeName=""+value;
+        System.out.println(themeName);
     }
 }
