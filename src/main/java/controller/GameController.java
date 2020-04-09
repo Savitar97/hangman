@@ -30,6 +30,5 @@ public class GameController {
 
     public void setChoice(Object value) {
     themeName=""+value;
-        System.out.println(themeName);
     }
 }

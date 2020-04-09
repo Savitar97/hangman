@@ -38,6 +38,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choice" layoutX="484.0" layoutY="396.0" onMouseClicked="#uploadData" prefWidth="150.0" value="Names" />
+      <ChoiceBox fx:id="choice" layoutX="484.0" layoutY="396.0" onMouseClicked="#initialize" prefWidth="150.0" value="names" />
     </children>
 </Pane>
