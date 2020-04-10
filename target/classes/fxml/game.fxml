@@ -1,26 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-border-color: #F00;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0">
+      <BorderPane prefHeight="600.0" prefWidth="800.0">
          <top>
          </top>
          <top>
-            <Label fx:id="nicknameLabel" alignment="TOP_LEFT" text="Hi," BorderPane.alignment="TOP_LEFT">
-               <font>
-                  <Font size="22.0" />
-               </font>
-               <padding>
-                  <Insets left="10.0" top="10.0" />
-               </padding>
-            </Label>
+            <Pane prefHeight="81.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="nicknameLabel" alignment="TOP_LEFT" text="Hi,">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="surrenderGame" layoutX="685.0" layoutY="18.0" mnemonicParsing="false" text="Surrender" />
+               </children>
+            </Pane>
          </top>
+         <bottom>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="54.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="A">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="118.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="B">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="182.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="C">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="246.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="D">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="310.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="E">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="374.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="F">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="438.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="G">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="502.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="H">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="566.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="I">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="630.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="J">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="694.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="K">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="54.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="L">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="118.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="M">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="182.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="N">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="246.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="O">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="310.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="P">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="374.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="Q">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="438.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="R">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="502.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="S">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="566.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="T">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="630.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="U">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="694.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="V">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="54.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="W">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
+                  <Button layoutX="118.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="X">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="182.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="Y">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="246.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="Z">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+               </children>
+            </Pane>
+         </bottom>
+         <right>
+            <ImageView fx:id="gallows" fitHeight="320.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="20.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </right>
+         <center>
+            <Label fx:id="word" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </children>
 </Pane>

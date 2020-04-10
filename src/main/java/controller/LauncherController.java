@@ -43,7 +43,7 @@ public class LauncherController {
         }
     }
 
-    public void initialize(MouseEvent mouseEvent) {
+    public void initThemes(MouseEvent mouseEvent) {
         choice.setItems(themes);
         choice.setValue("names");
     }
