@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.awt.*;
 import java.util.List;
@@ -62,6 +61,7 @@ public class GameController {
         Button btn=(Button)actionEvent.getSource();
         String choice=btn.getText();
         System.out.println(choice);
+        btn.setVisible(false);
         btn.setDisable(true);
     }
 }

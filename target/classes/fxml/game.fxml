@@ -119,19 +119,19 @@
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button layoutX="54.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="W">
+                  <Button layoutX="284.0" layoutY="118.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="W">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                  <Button layoutX="118.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="X">
+                  <Button layoutX="344.0" layoutY="118.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="X">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button layoutX="182.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="Y">
+                  <Button layoutX="404.0" layoutY="118.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="Y">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button layoutX="246.0" layoutY="114.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="Z">
+                  <Button layoutX="464.0" layoutY="118.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="Z">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
