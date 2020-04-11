@@ -21,6 +21,9 @@ public class RandomWord {
         }
     }
     public static String getWord() {
+        if(words.isEmpty()){
+            throw new UnsupportedOperationException();
+        }
         return words.get((int) (Math.random() * words.size()));
     }
 
