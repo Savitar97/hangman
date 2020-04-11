@@ -1,5 +1,6 @@
 package controller;
 
+import game.RandomWord;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ public class GameController {
     public Button surrenderGame;
     public Label word;
     public ImageView gallows;
+    public Label score;
     private String nickName;
     private String themeName;
     private List<Image> gallowImages;
@@ -44,6 +46,8 @@ public class GameController {
                 new Image(getClass().getResource("/images/hangman9.jpg").toExternalForm()),
                 new Image(getClass().getResource("/images/hangman10.jpg").toExternalForm())
         );
+        String szo=RandomWord.getWord().toUpperCase();
+        word.setText(szo);
     }
 
     public void setNickname(String nickName) {
