@@ -1,5 +1,6 @@
 package controller;
 
+import game.Game;
 import game.RandomWord;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
@@ -26,6 +27,7 @@ public class GameController {
     private String nickName;
     private String themeName;
     private List<Image> gallowImages;
+    private Game game;
 
 
     @FXML
@@ -46,8 +48,8 @@ public class GameController {
                 new Image(getClass().getResource("/images/hangman9.jpg").toExternalForm()),
                 new Image(getClass().getResource("/images/hangman10.jpg").toExternalForm())
         );
-        String szo=RandomWord.getWord().toUpperCase();
-        word.setText(szo);
+        game=new Game();
+        word.setText(game.getWord());
     }
 
     public void setNickname(String nickName) {
@@ -66,6 +68,8 @@ public class GameController {
         String choice=btn.getText();
         System.out.println(choice);
         btn.setVisible(false);
-        btn.setDisable(true);
+        score.setText(""+game.getScore());
+        game=new Game();
+        word.setText(game.getWord());
     }
 }
