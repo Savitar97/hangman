@@ -13,7 +13,7 @@ public class Game {
         usedLetters=new ArrayList<>();
     }
     private String wordSelector(){
-        String temp=RandomWord.getWord();
+        String temp=RandomWord.getWord().toUpperCase();
         if(!usedWords.contains(temp)){
             usedWords.add(temp);
             return temp;
