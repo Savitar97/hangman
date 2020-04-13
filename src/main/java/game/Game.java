@@ -15,8 +15,8 @@ public class Game {
 
     public Game() {
         word=wordSelector();
-        encryptedWord=setEncryptedWord(word);
         usedLetters=new ArrayList<>();
+        encryptedWord=setEncryptedWord(word);
     }
 
     private String wordSelector(){
@@ -63,7 +63,6 @@ public class Game {
             }
         }
         solvedWord=isSolvedWord(encryptedWord);
-        System.out.println(encryptedWord);
         return correctGuess;
     }
 
