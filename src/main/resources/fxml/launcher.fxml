@@ -32,7 +32,7 @@
             <Font size="14.0" />
          </font></TextField>
         <Button fx:id="runButton" alignment="CENTER" layoutX="348.0" layoutY="473.0" mnemonicParsing="false" onAction="#runAction" prefHeight="51.0" prefWidth="105.0" text="Start game" textAlignment="CENTER" />
-        <Label fx:id="errorLabel" layoutX="223.0" layoutY="200.0" prefHeight="16.0" prefWidth="151.0" textFill="#e30e0e" />
+        <Label fx:id="errorLabel" layoutX="223.0" layoutY="424.0" prefHeight="16.0" prefWidth="151.0" textFill="#e30e0e" />
       <Label layoutX="393.0" layoutY="394.0" text="Theme:" textFill="#dd0404">
          <font>
             <Font size="24.0" />
