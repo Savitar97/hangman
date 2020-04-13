@@ -31,7 +31,7 @@ public class Game {
     }
 
     private boolean checkIsInAlphabet(char c){
-        if((c >= 'A' && c <= 'Z')||(c >= 'a' && c <= 'z')){
+        if(c >= 'A' && c <= 'Z'){
             return true;
         }
         else {
@@ -47,14 +47,14 @@ public class Game {
         return ew;
     }
 
-    public void makeGuess(String w) throws Exception {
+    public boolean makeGuess(String w) throws Exception {
         char searchHelp=w.toUpperCase().charAt(0);
         char[] wordArray=word.toCharArray();
         StringBuilder sb=new StringBuilder(encryptedWord);
+        boolean find=false;
         if(checkIsInAlphabet(searchHelp)){
             if (!usedLetters.contains(searchHelp)){
                 usedLetters.add(searchHelp);
-                boolean find=false;
                 for (int i = 0; i <wordArray.length ; i++) {
                     if (wordArray[i]==searchHelp){
                         score+=100;
@@ -72,12 +72,20 @@ public class Game {
             }
         }
         encryptedWord=sb.toString();
-        if(encryptedWord.equals(word)){
-            correctGuess=true;
-        }
+        correctGuess=isSolvedWord(encryptedWord);
         System.out.println(encryptedWord);
+        return find;
     }
 
+    private boolean isSolvedWord(String w){
+        if(w.equals(word))
+            return true;
+        else return false;
+    }
+
+    public boolean isWin(){
+        return usedWords.containsAll(RandomWord.words);
+    }
     public String getWord() {
         return word;
     }
