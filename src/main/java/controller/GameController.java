@@ -69,7 +69,7 @@ public class GameController {
         btn.setVisible(false);
         btn.setDisable(true);
         setTheUI();
-        if (game.isCorrectGuess()){
+        if (game.isSolvedWord()){
             game=new Game();
             resetButtonConfig();
             setTheUI();

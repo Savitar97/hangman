@@ -10,7 +10,7 @@ public class Game {
     private static ArrayList<String> usedWords=new ArrayList<>();
     private ArrayList<Character> usedLetters;
     private final int MAX_FAULT=9;
-    private boolean correctGuess=false;
+    private boolean solvedWord=false;
     private int countFault=0;
 
     public Game() {
@@ -49,31 +49,40 @@ public class Game {
 
     public boolean makeGuess(String w) throws Exception {
         char searchHelp=w.toUpperCase().charAt(0);
-        char[] wordArray=word.toCharArray();
-        StringBuilder sb=new StringBuilder(encryptedWord);
-        boolean find=false;
+        boolean correctGuess=false;
         if(checkIsInAlphabet(searchHelp)){
             if (!usedLetters.contains(searchHelp)){
                 usedLetters.add(searchHelp);
-                for (int i = 0; i <wordArray.length ; i++) {
-                    if (wordArray[i]==searchHelp){
-                        score+=100;
-                        sb.setCharAt(i,searchHelp);
-                        find=true;
-                    }
-                }
-                if (find==false){
+                correctGuess=findTheWord(searchHelp);
+                if (correctGuess==false){
                     countFault++;
                 }
-
             }
             else {
                 throw new Exception("LetterWasUsed");
             }
         }
-        encryptedWord=sb.toString();
-        correctGuess=isSolvedWord(encryptedWord);
+        solvedWord=isSolvedWord(encryptedWord);
         System.out.println(encryptedWord);
+        return correctGuess;
+    }
+
+    private void incScore(){
+        score+=100;
+    }
+
+    private boolean findTheWord(char ch){
+        char[] wordArray=word.toCharArray();
+        StringBuilder sb=new StringBuilder(encryptedWord);
+        boolean find=false;
+        for (int i = 0; i <wordArray.length ; i++) {
+            if (wordArray[i]==ch){
+                incScore();
+                find=true;
+                sb.setCharAt(i,ch);
+            }
+        }
+        encryptedWord=sb.toString();
         return find;
     }
 
@@ -98,7 +107,8 @@ public class Game {
     public int getCountFault() {
         return countFault;
     }
-    public boolean isCorrectGuess() {
-        return correctGuess;
+
+    public boolean isSolvedWord() {
+        return solvedWord;
     }
 }
