@@ -8,7 +8,14 @@
     <artifactId>hangman</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
-
+    <developers>
+        <developer>
+            <id>Ifrit</id>
+            <name>Attila Tóth</name>
+            <organization>Faculty of Informatics, University of Debrecen</organization>
+            <organizationUrl>https://www.inf.unideb.hu/</organizationUrl>
+        </developer>
+    </developers>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>

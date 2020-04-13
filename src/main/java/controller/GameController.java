@@ -64,7 +64,7 @@ public class GameController {
     public void getChoice(ActionEvent actionEvent) throws Exception {
         Button btn=(Button)actionEvent.getSource();
         String choice=btn.getText();
-        game.makeaGuess(btn.getText());
+        game.makeGuess(btn.getText());
         btn.setVisible(false);
         word.setText(viewEncrypted(game.getEncryptedWord()));
         score.setText(""+game.getScore());

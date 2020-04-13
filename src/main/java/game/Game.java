@@ -43,7 +43,7 @@ public class Game {
         return ew;
     }
 
-    public void makeaGuess(String w) throws Exception {
+    public void makeGuess(String w) throws Exception {
         char searchHelp=w.toUpperCase().charAt(0);
         char[] wordArray=word.toCharArray();
         StringBuilder sb=new StringBuilder(encryptedWord);
