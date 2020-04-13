@@ -10,6 +10,7 @@ public class Game {
     private static ArrayList<String> usedWords=new ArrayList<>();
     private ArrayList<Character> usedLetters;
     private final int MAX_FAULT=9;
+    private boolean correctGuess=false;
     private int countFault=0;
     public Game() {
         word=wordSelector();
@@ -68,6 +69,9 @@ public class Game {
             }
         }
         encryptedWord=sb.toString();
+        if(encryptedWord.equals(word)){
+            correctGuess=true;
+        }
         System.out.println(encryptedWord);
     }
     public String getWord() {
@@ -83,5 +87,9 @@ public class Game {
 
     public int getCountFault() {
         return countFault;
+    }
+
+    public boolean isCorrectGuess() {
+        return correctGuess;
     }
 }

@@ -39,7 +39,7 @@
             </Pane>
          </top>
          <bottom>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="ButtonPane">
                <children>
                   <Button layoutX="54.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="A">
                      <font>
