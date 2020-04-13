@@ -12,11 +12,13 @@ public class Game {
     private final int MAX_FAULT=9;
     private boolean correctGuess=false;
     private int countFault=0;
+
     public Game() {
         word=wordSelector();
         encryptedWord=setEncryptedWord(word);
         usedLetters=new ArrayList<>();
     }
+
     private String wordSelector(){
         String temp=RandomWord.getWord().toUpperCase();
         if(!usedWords.contains(temp)){
@@ -36,6 +38,7 @@ public class Game {
             throw new NoSuchElementException();
         }
     }
+    
     private String setEncryptedWord(String w){
         String ew = "";
         for (int i = 0; i <word.length() ; i++) {
@@ -74,21 +77,19 @@ public class Game {
         }
         System.out.println(encryptedWord);
     }
+
     public String getWord() {
         return word;
     }
     public static int getScore() {
         return score;
     }
-
     public String getEncryptedWord() {
         return encryptedWord;
     }
-
     public int getCountFault() {
         return countFault;
     }
-
     public boolean isCorrectGuess() {
         return correctGuess;
     }
