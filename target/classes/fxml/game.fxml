@@ -24,7 +24,10 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="surrenderGame" layoutX="702.0" layoutY="44.0" mnemonicParsing="false" text="Surrender" />
+                  <Button fx:id="surrenderGame" layoutX="609.0" layoutY="16.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="150.0" text="Surrender">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
                   <Label fx:id="score" layoutX="106.0" layoutY="47.0" maxHeight="21.0" minHeight="21.0" prefHeight="21.0" text="0">
                      <font>
                         <Font size="17.0" />
@@ -39,7 +42,7 @@
             </Pane>
          </top>
          <bottom>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="ButtonPane">
+            <Pane fx:id="ButtonPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Button layoutX="54.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="A">
                      <font>
@@ -91,7 +94,7 @@
                      </font></Button>
                   <Button layoutX="118.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="M">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font></Button>
                   <Button layoutX="182.0" layoutY="64.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#getChoice" text="N">
                      <font>

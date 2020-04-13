@@ -1,8 +1,10 @@
 package game;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -13,7 +15,8 @@ public class RandomWord {
     static {
         try {
             ClassLoader classLoader = new RandomWord().getClass().getClassLoader();
-            words= (ArrayList<String>) Files.readAllLines(Paths.get(classLoader.getResource("themes/names.txt").getPath()));
+            Path path = new File(RandomWord.class.getResource("/themes/names.txt").getFile()).toPath();
+            words= (ArrayList<String>) Files.readAllLines(path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
