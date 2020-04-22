@@ -14,11 +14,15 @@ public class Game {
     private final int MAX_FAULT=9;
     private boolean solvedWord=false;
     private int countFault=0;
+    private static GameState gameState=GameState.RUNNING;
 
     public Game() {
-        word=wordSelector();
+
         usedLetters=new ArrayList<>();
-        encryptedWord=setEncryptedWord(word);
+        if(gameState==GameState.RUNNING) {
+            word=wordSelector();
+        }
+            encryptedWord = setEncryptedWord(word);
     }
 
     /**
@@ -42,7 +46,7 @@ public class Game {
      * Check the guessed letter is in the English alphabet.
      * The guessed letter is {@param c}.
      * @return True, if the guessed letter is correct.
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException The letter not in the English alphabet.
      */
     private boolean checkIsInAlphabet(char c){
         if(c >= 'A' && c <= 'Z'){
@@ -59,18 +63,14 @@ public class Game {
      * @return The encrypted word.
      */
     private String setEncryptedWord(String w){
-        String ew = "";
-        for (int i = 0; i <word.length() ; i++) {
-            ew+="_";
-        }
-        return ew;
+        return "_".repeat(word.length());
     }
 
     /**
      * Simulating the user guessing a letter in the world and modify the game state.
      * The guessed letter is {@param w}.
      * @return True if the guess is correct,false otherwise.
-     * @throws Exception
+     * @throws Exception LetterWasUsed
      */
     public boolean makeGuess(String w) throws Exception {
         char searchHelp=w.toUpperCase().charAt(0);
@@ -79,7 +79,7 @@ public class Game {
             if (!usedLetters.contains(searchHelp)){
                 usedLetters.add(searchHelp);
                 correctGuess=findTheLetter(searchHelp);
-                if (correctGuess==false){
+                if (!correctGuess){
                     countFault++;
                 }
             }
@@ -88,6 +88,9 @@ public class Game {
             }
         }
         solvedWord=isSolvedWord(encryptedWord);
+        if(countFault==MAX_FAULT){
+            gameState=GameState.LOSE;
+        }
         return correctGuess;
     }
 
@@ -126,10 +129,7 @@ public class Game {
      * @return True if the user hits the word.
      */
     private boolean isSolvedWord(String w){
-        if(w.equals(word))
-            return true;
-        else
-            return false;
+        return w.equals(word);
     }
 
     public boolean isWin(){
@@ -150,5 +150,9 @@ public class Game {
 
     public boolean isSolvedWord() {
         return solvedWord;
+    }
+
+    public static GameState getGameState() {
+        return gameState;
     }
 }
