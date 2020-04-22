@@ -1,10 +1,6 @@
 package game;
 
-import org.hibernate.procedure.NoSuchParameterException;
-
-import javax.naming.directory.NoSuchAttributeException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
 /**
  * Simulating a gameplay.
@@ -59,7 +55,7 @@ public class Game {
 
     /**
      * Making the encrypted word string.
-     * The selected word {@param w}
+     * The selected word is {@param w}.
      * @return The encrypted word.
      */
     private String setEncryptedWord(String w){
@@ -72,8 +68,8 @@ public class Game {
 
     /**
      * Simulating the user guessing a letter in the world and modify the game state.
-     * The guessed letter is {@param w}
-     * @return True if the guess is correct.
+     * The guessed letter is {@param w}.
+     * @return True if the guess is correct,false otherwise.
      * @throws Exception
      */
     public boolean makeGuess(String w) throws Exception {
@@ -106,8 +102,8 @@ public class Game {
      * Find the letter in the word.
      * This method finding the letter in the world and modify the encrypted word
      * with the letters found.
-     * The guessed letter is {@param ch}
-     * @return True if the word contains the letter.
+     * The guessed letter is {@param ch}.
+     * @return True if the word contains the letter,false otherwise.
      */
     private boolean findTheLetter(char ch){
         char[] wordArray=word.toCharArray();
@@ -126,7 +122,7 @@ public class Game {
 
     /**
      * Checks if the word matches the encrypted one.
-     * The encrypted word is {@param w}
+     * The encrypted word is {@param w}.
      * @return True if the user hits the word.
      */
     private boolean isSolvedWord(String w){
