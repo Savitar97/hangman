@@ -7,8 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
-
+/**
+ *A class for read the themes and select random words.
+ */
 public class RandomWord {
     static ArrayList<String> words;
 
@@ -23,9 +26,14 @@ public class RandomWord {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Select a random word.
+     * @return The selected word.
+     */
     public static String getWord() {
         if(words.isEmpty()){
-            throw new UnsupportedOperationException();
+            throw new NoSuchElementException();
         }
         return words.get((int) (Math.random() * words.size()));
     }

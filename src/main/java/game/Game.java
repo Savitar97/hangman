@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+
 public class Game {
     private static int score=0;
     private String word;
