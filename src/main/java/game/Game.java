@@ -1,9 +1,14 @@
 package game;
 
+import org.hibernate.procedure.NoSuchParameterException;
+
+import javax.naming.directory.NoSuchAttributeException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-
+/**
+ * Simulating a gameplay.
+ */
 public class Game {
     private static int score=0;
     private String word;
@@ -20,6 +25,12 @@ public class Game {
         encryptedWord=setEncryptedWord(word);
     }
 
+    /**
+     * Select a word with {@link RandomWord#getWord()}.
+     * Select a random word and add to the used words list,if the word has not been used yet else
+     * select a new word.
+     * @return The selected word.
+     */
     private String wordSelector(){
         String temp=RandomWord.getWord().toUpperCase();
         if(!usedWords.contains(temp)){
@@ -31,15 +42,26 @@ public class Game {
         }
     }
 
+    /**
+     * Check the guessed letter is in the English alphabet.
+     * The guessed letter is {@param c}.
+     * @return True, if the guessed letter is correct.
+     * @throws IllegalArgumentException
+     */
     private boolean checkIsInAlphabet(char c){
         if(c >= 'A' && c <= 'Z'){
             return true;
         }
         else {
-            throw new NoSuchElementException();
+            throw new IllegalArgumentException();
         }
     }
-    
+
+    /**
+     * Making the encrypted word string.
+     * The selected word {@param w}
+     * @return The encrypted word.
+     */
     private String setEncryptedWord(String w){
         String ew = "";
         for (int i = 0; i <word.length() ; i++) {
@@ -48,13 +70,19 @@ public class Game {
         return ew;
     }
 
+    /**
+     * Simulating the user guessing a letter in the world and modify the game state.
+     * The guessed letter is {@param w}
+     * @return True if the guess is correct.
+     * @throws Exception
+     */
     public boolean makeGuess(String w) throws Exception {
         char searchHelp=w.toUpperCase().charAt(0);
         boolean correctGuess=false;
         if(checkIsInAlphabet(searchHelp)){
             if (!usedLetters.contains(searchHelp)){
                 usedLetters.add(searchHelp);
-                correctGuess=findTheWord(searchHelp);
+                correctGuess=findTheLetter(searchHelp);
                 if (correctGuess==false){
                     countFault++;
                 }
@@ -67,11 +95,21 @@ public class Game {
         return correctGuess;
     }
 
+    /**
+     * Method that increase the score.
+     */
     private void incScore(){
         score+=100;
     }
 
-    private boolean findTheWord(char ch){
+    /**
+     * Find the letter in the word.
+     * This method finding the letter in the world and modify the encrypted word
+     * with the letters found.
+     * The guessed letter is {@param ch}
+     * @return True if the word contains the letter.
+     */
+    private boolean findTheLetter(char ch){
         char[] wordArray=word.toCharArray();
         StringBuilder sb=new StringBuilder(encryptedWord);
         boolean find=false;
@@ -86,10 +124,16 @@ public class Game {
         return find;
     }
 
+    /**
+     * Checks if the word matches the encrypted one.
+     * The encrypted word is {@param w}
+     * @return True if the user hits the word.
+     */
     private boolean isSolvedWord(String w){
         if(w.equals(word))
             return true;
-        else return false;
+        else
+            return false;
     }
 
     public boolean isWin(){
