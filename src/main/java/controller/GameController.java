@@ -68,15 +68,16 @@ public class GameController {
         btn.setDisable(true);
         btn.setVisible(false);
         setTheUI();
-        if (game.isSolvedWord()&& Game.getGameState()== GameState.RUNNING){
+        if (Game.getGameState()==GameState.LOSE|| Game.getGameState()==GameState.WIN)
+        {
+            disableAllButton();
+        }
+        else if (game.isSolvedWord()&& Game.getGameState()== GameState.RUNNING){
             game=new Game();
             resetButtonConfig();
             setTheUI();
         }
-        else if (Game.getGameState()==GameState.LOSE|| Game.getGameState()==GameState.WIN)
-        {
-            disableAllButton();
-        }
+
 
     }
     public void setGallowImages(int i){

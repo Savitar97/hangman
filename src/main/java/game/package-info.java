@@ -1,4 +1,4 @@
 /**
- * A package which simulating the game logic.
+ * A package which simulates the game logic.
  */
 package game;
