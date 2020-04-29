@@ -23,21 +23,21 @@
             </ImageView>
          </graphic>
         </Label>
-        <Label layoutX="91.0" layoutY="394.0" text="Nickname:" textFill="#e80606">
+        <Label layoutX="71.0" layoutY="407.0" text="Nickname:" textFill="#e80606">
          <font>
             <Font size="24.0" />
          </font></Label>
-        <TextField fx:id="nicknameTextfield" layoutX="219.0" layoutY="395.0" prefHeight="26.0" prefWidth="158.0">
+        <TextField fx:id="nicknameTextfield" layoutX="199.0" layoutY="410.0" prefHeight="26.0" prefWidth="158.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-        <Button fx:id="runButton" alignment="CENTER" layoutX="348.0" layoutY="473.0" mnemonicParsing="false" onAction="#runAction" prefHeight="51.0" prefWidth="105.0" text="Start game" textAlignment="CENTER" />
+        <Button fx:id="runButton" alignment="CENTER" layoutX="313.0" layoutY="472.0" mnemonicParsing="false" onAction="#runAction" prefHeight="51.0" prefWidth="128.0" stylesheets="@btn.css" text="Start game" textAlignment="CENTER" />
         <Label fx:id="errorLabel" layoutX="223.0" layoutY="424.0" prefHeight="16.0" prefWidth="151.0" textFill="#e30e0e" />
-      <Label layoutX="393.0" layoutY="394.0" text="Theme:" textFill="#dd0404">
+      <Label layoutX="396.0" layoutY="407.0" text="Theme:" textFill="#dd0404">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choice" layoutX="484.0" layoutY="396.0" onMouseClicked="#initThemes" prefWidth="150.0" value="names" />
+      <ChoiceBox fx:id="choice" layoutX="487.0" layoutY="411.0" onMouseClicked="#initThemes" prefWidth="150.0" value="names" />
     </children>
 </Pane>
