@@ -4,13 +4,18 @@ import game.Game;
 import game.GameState;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Arrays;
 
@@ -31,21 +36,14 @@ public class GameController {
     @FXML
     public void initialize(){
         System.out.println("Initialize");
-        gallowImages=Arrays.asList(
-                new Image(getClass().getResource("/images/hangman1.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman2.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman3.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman4.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman5.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman6.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman7.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman8.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman9.jpg").toExternalForm()),
-                new Image(getClass().getResource("/images/hangman10.jpg").toExternalForm())
-        );
+        initializeImages();
+        Game.startGame();
         game=new Game();
         setTheUI();
     }
+
+
+
     private String viewEncrypted(String ve){
         StringBuilder sb= new StringBuilder();
         for (int i = 0; i < ve.length(); i++) {
@@ -71,6 +69,10 @@ public class GameController {
         if (Game.getGameState()==GameState.LOSE|| Game.getGameState()==GameState.WIN)
         {
             disableAllButton();
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/ranglist.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
         }
         else if (game.isSolvedWord()&& Game.getGameState()== GameState.RUNNING){
             game=new Game();
@@ -112,5 +114,26 @@ public class GameController {
             bt.setDisable(false);
             bt.setVisible(true);
         }
+    }
+
+    public void surrendGame(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ranglist.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+    void initializeImages(){
+        gallowImages=Arrays.asList(
+                new Image(getClass().getResource("/images/hangman1.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman2.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman3.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman4.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman5.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman6.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman7.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman8.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman9.jpg").toExternalForm()),
+                new Image(getClass().getResource("/images/hangman10.jpg").toExternalForm())
+        );
     }
 }

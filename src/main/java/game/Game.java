@@ -1,5 +1,6 @@
 package game;
 
+
 import java.util.ArrayList;
 
 
@@ -163,6 +164,15 @@ public class Game {
         }
     }
 
+    /**
+     * Initialize the game.
+     */
+    public static void startGame(){
+        setGameState(GameState.RUNNING);
+        setScore(0);
+        RandomWord.inicializeWords();
+    }
+
     public String getWord() {
         return word;
     }
@@ -186,5 +196,9 @@ public class Game {
 
     public static void setGameState(GameState gameState) {
         Game.gameState = gameState;
+    }
+
+    public static void setScore(int score) {
+        Game.score = score;
     }
 }

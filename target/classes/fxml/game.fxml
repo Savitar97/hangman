@@ -24,7 +24,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="surrenderGame" layoutX="609.0" layoutY="16.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="150.0" text="Surrender">
+                  <Button fx:id="surrenderGame" layoutX="609.0" layoutY="16.0" mnemonicParsing="false" onAction="#surrendGame" prefHeight="49.0" prefWidth="150.0" text="Surrender">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
