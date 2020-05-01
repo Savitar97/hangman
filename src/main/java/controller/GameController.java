@@ -42,8 +42,6 @@ public class GameController {
         setTheUI();
     }
 
-
-
     private String viewEncrypted(String ve){
         StringBuilder sb= new StringBuilder();
         for (int i = 0; i < ve.length(); i++) {
@@ -79,9 +77,8 @@ public class GameController {
             resetButtonConfig();
             setTheUI();
         }
-
-
     }
+
     public void setGallowImages(int i){
         switch (i){
             case 0:gallows.setImage(gallowImages.get(0)); break;
@@ -96,6 +93,7 @@ public class GameController {
             case 9:gallows.setImage(gallowImages.get(9)); break;
         }
     }
+
     public void disableAllButton(){
         for (Node btn:ButtonPane.getChildren()){
             Button bt=(Button)btn;
@@ -103,11 +101,13 @@ public class GameController {
             bt.setVisible(false);
         }
     }
+
     public void setTheUI(){
         word.setText(viewEncrypted(game.getEncryptedWord()));
         score.setText(""+ Game.getScore());
         setGallowImages(game.getCountFault());
     }
+
     public void resetButtonConfig(){
         for (Node btn:ButtonPane.getChildren()){
             Button bt=(Button)btn;
@@ -116,12 +116,13 @@ public class GameController {
         }
     }
 
-    public void surrendGame(ActionEvent actionEvent) throws IOException {
+    public void surrenderGame(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/ranglist.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
+
     void initializeImages(){
         gallowImages=Arrays.asList(
                 new Image(getClass().getResource("/images/hangman1.jpg").toExternalForm()),

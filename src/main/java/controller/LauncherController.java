@@ -1,6 +1,5 @@
 package controller;
 
-import game.Game;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,12 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
 public class LauncherController {
-    ObservableList themes=FXCollections.observableArrayList("names");
+    ObservableList<String> themes=FXCollections.observableArrayList("names");
     @FXML
     public Button runButton;
     @FXML
@@ -29,6 +27,7 @@ public class LauncherController {
     private Label errorLabel;
     @FXML
     private TextField nicknameTextfield;
+
     public void runAction(ActionEvent actionEvent) throws IOException {
         if (nicknameTextfield.getText().isEmpty()) {
             errorLabel.setText("* Username is empty!");

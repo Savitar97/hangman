@@ -5,14 +5,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@btn.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Ranglist">
-   <children>
-      <TableView layoutX="14.0" layoutY="14.0" prefHeight="479.0" prefWidth="770.0">
-        <columns>
-          <TableColumn maxWidth="-1.0" minWidth="200.0" prefWidth="200.0" text="Player_name" />
-          <TableColumn maxWidth="-1.0" minWidth="50.0" prefWidth="49.0" text="Score" />
-        </columns>
-      </TableView>
-      <Button layoutX="356.0" layoutY="537.0" mnemonicParsing="false" onAction="#setMainMenu" prefHeight="49.0" prefWidth="89.0" text="Main Menu" />
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+      prefWidth="800.0" stylesheets="@btn.css" xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Ranglist">
+    <TableView layoutX="14.0" layoutY="14.0" prefHeight="479.0" prefWidth="770.0">
+      <columns>
+          <TableColumn maxWidth="-1.0" minWidth="200.0" prefWidth="200.0" text="Player_name"/>
+          <TableColumn maxWidth="-1.0" minWidth="50.0" prefWidth="49.0" text="Score"/>
+      </columns>
+    </TableView>
+    <Button layoutX="356.0" layoutY="537.0" mnemonicParsing="false" onAction="#setMainMenu" prefHeight="49.0"
+            prefWidth="89.0" text="Main Menu"/>
 </Pane>

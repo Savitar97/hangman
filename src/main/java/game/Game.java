@@ -11,8 +11,8 @@ public class Game {
     private static int score=0;
     private String word;
     private String encryptedWord;
-    private static ArrayList<String> usedWords=new ArrayList<>();
-    private ArrayList<Character> usedLetters;
+    private static final ArrayList<String> usedWords=new ArrayList<>();
+    private final ArrayList<Character> usedLetters;
     private final int MAX_FAULT=9;
     private boolean solvedWord=false;
     private int countFault=0;
@@ -23,7 +23,7 @@ public class Game {
         usedLetters=new ArrayList<>();
         if (gameState==GameState.RUNNING){
             word=wordSelector();
-            encryptedWord = setEncryptedWord(word);
+            encryptedWord = setEncryptedWord();
         }
     }
 
@@ -64,7 +64,7 @@ public class Game {
      * The selected word is {@param w}.
      * @return The encrypted word.
      */
-    private String setEncryptedWord(String w){
+    private String setEncryptedWord(){
         return "_".repeat(word.length());
     }
 
@@ -173,9 +173,6 @@ public class Game {
         RandomWord.inicializeWords();
     }
 
-    public String getWord() {
-        return word;
-    }
     public static int getScore() {
         return score;
     }
