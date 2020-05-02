@@ -1,18 +1,21 @@
 package game;
 
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 
 
 /**
  * Simulating a gameplay.
  */
+@Slf4j
 public class Game {
     private static int score=0;
     private String word;
     private String encryptedWord;
     private static final ArrayList<String> usedWords=new ArrayList<>();
-    private final ArrayList<Character> usedLetters;
+    private  ArrayList<Character> usedLetters;
     private final int MAX_FAULT=9;
     private boolean solvedWord=false;
     private int countFault=0;
@@ -20,11 +23,21 @@ public class Game {
 
     public Game() {
         System.out.println(gameState);
-        usedLetters=new ArrayList<>();
+
         if (gameState==GameState.RUNNING){
             word=wordSelector();
             encryptedWord = setEncryptedWord();
         }
+    }
+    public Game(String w) throws Exception {
+        usedLetters=new ArrayList<>();
+        w.toUpperCase();
+        if(!usedWords.contains(w)){
+        setWord(w);
+        encryptedWord = setEncryptedWord();
+        }
+        else throw new Exception("Already used word!");
+
     }
 
     /**
@@ -50,7 +63,7 @@ public class Game {
      * @return True, if the guessed letter is correct.
      * @throws IllegalArgumentException if the letter not in the English alphabet.
      */
-    private boolean checkIsInAlphabet(char c){
+    public boolean checkIsInAlphabet(char c){
         if(c >= 'A' && c <= 'Z'){
             return true;
         }
@@ -86,11 +99,12 @@ public class Game {
                 }
             }
             else {
-                throw new Exception("LetterWasUsed");
+                log.info("Letter:{} already used!");
+                throw new Exception("Already used letter!");
             }
         }
         solvedWord=isSolvedWord(encryptedWord);
-
+        log.info("Now the encryptedWord state: {}",encryptedWord);
         return correctGuess;
     }
     
@@ -101,6 +115,7 @@ public class Game {
     private boolean isGameLose(int n){
         if (n==MAX_FAULT){
             setGameState(GameState.LOSE);
+            log.info("GameState set:{}",GameState.LOSE);
             return true;
         }
         else
@@ -113,7 +128,7 @@ public class Game {
      */
     private boolean isGameWin(){
         if (usedWords.size()==RandomWord.themeWords.size()){
-            setGameState(GameState.WIN);
+            log.info("GameState set:{}",GameState.WIN);
             return true;
         }else
             return false;
@@ -124,6 +139,7 @@ public class Game {
      */
     private void incScore(){
         score+=100;
+        log.info("Score increased. Now the current score is:{}",score);
     }
 
     /**
@@ -141,6 +157,7 @@ public class Game {
             if (wordArray[i]==ch){
                 incScore();
                 find=true;
+                log.info("Char {} was found in the word!",ch);
                 sb.setCharAt(i,ch);
             }
         }
@@ -155,6 +172,7 @@ public class Game {
      */
     private boolean isSolvedWord(String w){
         if (w.equals(word)){
+            log.info("Solved the word {}",w);
             isGameWin();
             return true;
         }
@@ -172,6 +190,7 @@ public class Game {
         setScore(0);
         RandomWord.inicializeWords();
     }
+
 
     public static int getScore() {
         return score;
@@ -197,5 +216,17 @@ public class Game {
 
     public static void setScore(int score) {
         Game.score = score;
+    }
+
+    public void setWord(String word) {
+        this.word = word.toUpperCase();
+    }
+
+    public ArrayList<Character> getUsedLetters() {
+        return usedLetters;
+    }
+
+    public String getWord() {
+        return word;
     }
 }
