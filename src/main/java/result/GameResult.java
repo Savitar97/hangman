@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.ZonedDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,4 +23,12 @@ public class GameResult {
 
     @Column(nullable = false)
     private int score;
+
+    @Column(nullable = false)
+    private ZonedDateTime created;
+
+    @PrePersist
+    protected void onPersist() {
+        created = ZonedDateTime.now();
+    }
 }
