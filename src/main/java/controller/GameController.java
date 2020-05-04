@@ -14,11 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Arrays;
 
+@Slf4j
 public class GameController {
     public Button surrenderGame;
     public Label word;
@@ -34,10 +36,10 @@ public class GameController {
     private Label nicknameLabel;
 
     @FXML
-    public void initialize(){
+    public void initialize() throws Exception {
         System.out.println("Initialize");
         initializeImages();
-        Game.startGame();
+        Game.resetGame();
         game=new Game();
         setTheUI();
     }
@@ -71,6 +73,7 @@ public class GameController {
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+            log.info("The game is ended.The gamestate now LOSE or WIN");
         }
         else if (game.isSolvedWord()&& Game.getGameState()== GameState.RUNNING){
             game=new Game();
@@ -104,7 +107,7 @@ public class GameController {
 
     public void setTheUI(){
         word.setText(viewEncrypted(game.getEncryptedWord()));
-        score.setText(""+ Game.getScore());
+        score.setText(""+ game.getScore());
         setGallowImages(game.getCountFault());
     }
 
@@ -121,6 +124,7 @@ public class GameController {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+        log.info("The game is surrender.");
     }
 
     void initializeImages(){

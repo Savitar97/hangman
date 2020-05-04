@@ -21,23 +21,31 @@ public class Game {
     private int countFault=0;
     private static GameState gameState=GameState.RUNNING;
 
-    public Game() {
+    public Game() throws Exception {
         System.out.println(gameState);
-
+        usedLetters=new ArrayList<>();
         if (gameState==GameState.RUNNING){
             word=wordSelector();
             encryptedWord = setEncryptedWord();
         }
     }
+
+    /**
+     *
+     * @param w A secret word.
+     * @throws Exception Already used word!
+     */
     public Game(String w) throws Exception {
         usedLetters=new ArrayList<>();
         w.toUpperCase();
         if(!usedWords.contains(w)){
-        setWord(w);
-        encryptedWord = setEncryptedWord();
+            usedWords.add(w);
+            setWord(w);
+            encryptedWord = setEncryptedWord();
         }
-        else throw new Exception("Already used word!");
-
+        else {
+            throw new Exception("Already used word!");
+        }
     }
 
     /**
@@ -45,8 +53,9 @@ public class Game {
      * Select a random word and add to the used words list,if the word has not been used yet else
      * select a new word.
      * @return The selected word.
+     * @throws Exception Missing or empty file!
      */
-    private String wordSelector(){
+    private String wordSelector() throws Exception {
         String temp=RandomWord.getWord().toUpperCase();
         if(!usedWords.contains(temp)){
             usedWords.add(temp);
@@ -183,16 +192,17 @@ public class Game {
     }
 
     /**
-     * Initialize the game.
+     * Reset the game.
      */
-    public static void startGame(){
+    public static void resetGame(){
         setGameState(GameState.RUNNING);
+        usedWords.clear();
         setScore(0);
         RandomWord.inicializeWords();
     }
 
 
-    public static int getScore() {
+    public int getScore() {
         return score;
     }
     public String getEncryptedWord() {
@@ -202,8 +212,20 @@ public class Game {
         return countFault;
     }
 
+    public ArrayList<Character> getUsedLetters() {
+        return usedLetters;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
     public boolean isSolvedWord() {
         return solvedWord;
+    }
+
+    public static ArrayList<String> getUsedWords() {
+        return usedWords;
     }
 
     public static GameState getGameState() {
@@ -222,11 +244,4 @@ public class Game {
         this.word = word.toUpperCase();
     }
 
-    public ArrayList<Character> getUsedLetters() {
-        return usedLetters;
-    }
-
-    public String getWord() {
-        return word;
-    }
 }

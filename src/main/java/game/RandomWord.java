@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.*;
 
 
@@ -29,11 +30,12 @@ public class RandomWord {
      * Select a random word.
      * @return The selected word.
      */
-    public static String getWord() {
-        if(themeWords.isEmpty()){
-             throw new NoSuchElementException();
+    public static String getWord() throws Exception {
+        try {
+            return themeWords.get((int) (Math.random() * themeWords.size()));
+        } catch (NullPointerException e){
+            throw new Exception("Missing or empty file!");
         }
-        return themeWords.get((int) (Math.random() * themeWords.size()));
     }
 
 }
