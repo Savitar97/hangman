@@ -36,7 +36,6 @@ public class GameTest {
         assertThrows(Exception.class,()->games.makeGuess("A"));
         assertEquals(0,games.getCountFault());
         Game.resetGame();
-
     }
 
     @Test

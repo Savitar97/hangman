@@ -195,11 +195,11 @@ public class Game {
      * Reset the game.
      */
     public static void resetGame(){
-        setGameState(GameState.RUNNING);
         usedWords.clear();
+        setGameState(GameState.RUNNING);
         setScore(0);
-        RandomWord.inicializeWords();
     }
+
 
 
     public int getScore() {

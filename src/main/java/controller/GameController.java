@@ -22,18 +22,23 @@ import java.util.Arrays;
 
 @Slf4j
 public class GameController {
+    @FXML
     public Button surrenderGame;
+    @FXML
     public Label word;
+    @FXML
     public ImageView gallows;
+    @FXML
     public Label score;
+    @FXML
     public Pane ButtonPane;
     private String themeName;
     private List<Image> gallowImages;
     private Game game;
 
-
     @FXML
     private Label nicknameLabel;
+    private String nickName;
 
     @FXML
     public void initialize() throws Exception {
@@ -52,6 +57,7 @@ public class GameController {
         return sb.toString();
     }
     public void setNickname(String nickName) {
+        this.nickName=nickName;
         nicknameLabel.setText("Hi,"+nickName+"!");
         System.out.println(nickName);
     }

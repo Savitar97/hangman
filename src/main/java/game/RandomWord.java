@@ -19,7 +19,7 @@ public class RandomWord {
     /**
      * Initialize the list of words.
      */
-    public static void inicializeWords(){
+     static {
         BufferedReader reader = new BufferedReader(new InputStreamReader(RandomWord.class.getResourceAsStream("/themes/names.json")));
         //themeWords = reader.lines().collect(Collectors.toList());
         Gson gson = new Gson();
