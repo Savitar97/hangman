@@ -42,7 +42,7 @@ public class GameController {
 
     @FXML
     public void initialize() throws Exception {
-        System.out.println("Initialize");
+        log.info("The game started!");
         initializeImages();
         Game.resetGame();
         game=new Game();
