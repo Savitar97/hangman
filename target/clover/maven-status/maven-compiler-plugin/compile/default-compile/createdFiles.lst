@@ -1,6 +1,5 @@
 result/GameResultDao.class
 main/App.class
-game/Game$__CLR4_3_143r43rk9vi8rdt$1.class
 main/App$__CLR4_3_15k5kk9lin9k0$1.class
 game/RandomWord$1.class
 controller/RanglistController$__CLR4_3_13nq3nqk9t5unyf.class
@@ -19,9 +18,10 @@ result/GameResult$__CLR4_3_147w47wk9vi8rey$1.class
 game/RandomWord.class
 main/Main$__CLR4_3_15r5rk9lin9k3.class
 controller/GameController$__CLR4_3_140p40pk9vi8rbd.class
+game/Game$__CLR4_3_14vi4vik9vjry2w$1.class
+game/Game$__CLR4_3_14vi4vik9vjry2w.class
 main/Main.class
 controller/LauncherController$__CLR4_3_143b43bk9vi8rd2.class
-game/Game$__CLR4_3_143r43rk9vi8rdt.class
 jpa/GenericJPADao$__CLR4_3_1479479k9vi8re9$1.class
 controller/GameController.class
 result/GameResultDao$__CLR4_3_147y47yk9vi8rf4.class
