@@ -15,8 +15,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
+import result.GameResult;
+import result.GameResultDao;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
 import java.util.Arrays;
 
@@ -35,6 +39,7 @@ public class GameController {
     private String themeName;
     private List<Image> gallowImages;
     private Game game;
+    private GameResultDao gameResultDao;
 
     @FXML
     private Label nicknameLabel;
@@ -44,6 +49,7 @@ public class GameController {
     public void initialize() throws Exception {
         log.info("The game started!");
         initializeImages();
+        gameResultDao = GameResultDao.getInstance();
         Game.resetGame();
         game=new Game();
         setTheUI();
@@ -75,6 +81,7 @@ public class GameController {
         if (Game.getGameState()==GameState.LOSE|| Game.getGameState()==GameState.WIN)
         {
             disableAllButton();
+            gameResultDao.persist(getResult());
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/ranglist.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -146,5 +153,14 @@ public class GameController {
                 new Image(getClass().getResource("/images/hangman9.jpg").toExternalForm()),
                 new Image(getClass().getResource("/images/hangman10.jpg").toExternalForm())
         );
+    }
+
+    private GameResult getResult() {
+
+        GameResult result = GameResult.builder()
+                .nickname(nickName)
+                .score(game.getScore())
+                .build();
+        return result;
     }
 }

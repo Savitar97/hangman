@@ -8,23 +8,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import result.GameResult;
+import result.GameResultDao;
 
 import java.io.IOException;
-
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 
 public class RanglistController {
     @FXML
-    private TableView ranglistTable;
+    private TableView<GameResult> ranglistTable;
     @FXML
-    private TableColumn created;
+    private TableColumn<GameResult, String> nickname;
     @FXML
-    private TableColumn score;
+    private TableColumn<GameResult, Integer> score;
     @FXML
-    private TableColumn nickname;
+    private TableColumn<GameResult, ZonedDateTime> created;
+
+    private GameResultDao gameResultDao;
 
 
     public void setMainMenu(ActionEvent actionEvent) throws IOException {
@@ -36,6 +44,34 @@ public class RanglistController {
 
     @FXML
     public void initialize(){
+        gameResultDao = GameResultDao.getInstance();
+        List<GameResult> rangList = gameResultDao.findAll();
+        nickname.setCellValueFactory(new PropertyValueFactory<>("nickname"));
+        score.setCellValueFactory(new PropertyValueFactory<>("score"));
+        created.setCellValueFactory(new PropertyValueFactory<>("created"));
+
+        created.setCellFactory(column -> {
+            TableCell<GameResult, ZonedDateTime> cell = new TableCell<GameResult, ZonedDateTime>() {
+                private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss Z");
+
+                @Override
+                protected void updateItem(ZonedDateTime item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if(empty) {
+                        setText(null);
+                    }
+                    else {
+                        setText(item.format(formatter));
+                    }
+                }
+            };
+
+            return cell;
+        });
+        ObservableList<GameResult> observableResult = FXCollections.observableArrayList();
+        observableResult.addAll(rangList);
+
+        ranglistTable.setItems(observableResult);
 
     }
 }

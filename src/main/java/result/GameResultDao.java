@@ -21,7 +21,7 @@ public class GameResultDao extends GenericJPADao<GameResult>{
     }
 
     public List<GameResult> findAll() {
-        return entityManager.createQuery("SELECT r FROM GameResult r  ORDER BY r.score ASC, r.created DESC", GameResult.class)
+        return entityManager.createQuery("SELECT r FROM GameResult r  ORDER BY r.score desc , r.created DESC", GameResult.class)
                 .getResultList();
     }
 }

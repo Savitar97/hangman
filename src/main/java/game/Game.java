@@ -31,25 +31,6 @@ public class Game {
     }
 
     /**
-     *
-     * @param w A secret word.
-     * @throws Exception Already used word!
-     */
-    public Game(String w) throws Exception {
-        usedLetters=new ArrayList<>();
-        w.toUpperCase();
-        if (gameState==GameState.RUNNING) {
-            if (!usedWords.contains(w)) {
-                usedWords.add(w);
-                setWord(w);
-                encryptedWord = setEncryptedWord();
-            } else {
-                throw new Exception("Already used word!");
-            }
-        }
-    }
-
-    /**
      * Select a word with {@link RandomWord#getWord()}.
      * Select a random word and add to the used words list,if the word has not been used yet else
      * select a new word.
@@ -99,11 +80,13 @@ public class Game {
      */
     public boolean makeGuess(String w) throws Exception {
         char searchHelp=w.toUpperCase().charAt(0);
+
         boolean correctGuess=false;
         if(checkIsInAlphabet(searchHelp)){
             if (!usedLetters.contains(searchHelp)){
                 usedLetters.add(searchHelp);
                 correctGuess=findTheLetter(searchHelp);
+                log.info("{}",searchHelp);
                 if (!correctGuess){
                     countFault++;
                 }
@@ -161,6 +144,8 @@ public class Game {
      */
     private boolean findTheLetter(char ch){
         char[] wordArray=word.toCharArray();
+        log.info("word array:{}",wordArray);
+        log.info("ch:{}",ch);
         StringBuilder sb=new StringBuilder(encryptedWord);
         boolean find=false;
         for (int i = 0; i <wordArray.length ; i++) {
@@ -241,8 +226,13 @@ public class Game {
         Game.score = score;
     }
 
-    public void setWord(String word) {
-        this.word = word.toUpperCase();
+    public void setWord(String word) throws Exception {
+        usedWords.clear();
+        if (gameState==GameState.RUNNING) {
+            usedWords.add(word.toUpperCase());
+            this.word=word.toUpperCase();
+            encryptedWord = setEncryptedWord();
+        }
     }
 
 }

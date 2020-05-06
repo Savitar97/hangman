@@ -21,7 +21,7 @@ public class GameTest {
         Game.resetGame();
     }
     @Test
-    void testEncryptedWord() {
+    void testEncryptedWord() throws Exception {
         game.setWord("Aron");
         assertEquals("____",game.getEncryptedWord());
     }
@@ -29,7 +29,8 @@ public class GameTest {
     @Test
     void testMadeACorrectGuess() throws Exception {
         game.setWord("Anett");
-        assertTrue(game.makeGuess("n"));
+        System.out.println(game.getWord());
+        assertTrue(game.makeGuess("N"));
         assertEquals(100,game.getScore());
         assertEquals("_N___",game.getEncryptedWord());
         assertEquals(0,game.getCountFault());
@@ -59,22 +60,24 @@ public class GameTest {
     @Test
     void testSolvedWord() throws Exception {
         game.setWord("Pantheon");
-        assertTrue(game.makeGuess("p"));
-        assertTrue(game.makeGuess("A"));
-        assertTrue(game.makeGuess("n"));
-        assertTrue(game.makeGuess("h"));
-        assertTrue(game.makeGuess("e"));
-        assertTrue(game.makeGuess("t"));
-        assertTrue(game.makeGuess("o"));
-        assertTrue(game.isSolvedWord());
-        assertEquals(0,game.getCountFault());
-        assertEquals(800,game.getScore());
+        assertAll(
+                ()->assertTrue(game.makeGuess("p")),
+                ()->assertTrue(game.makeGuess("A")),
+                ()->assertTrue(game.makeGuess("n")),
+                ()->assertTrue(game.makeGuess("h")),
+                ()->assertTrue(game.makeGuess("e")),
+                ()->assertTrue(game.makeGuess("t")),
+                ()->assertTrue(game.makeGuess("o")),
+                ()->assertTrue(game.isSolvedWord()),
+                ()->assertEquals(0,game.getCountFault()),
+                ()->assertEquals(800,game.getScore())
+        );
     }
 
     @Test
-    void testUsedWord()  {
+    void testUsedWord() throws Exception {
         game.setWord("Peter");
-        assertEquals(Arrays.asList("Peter"),game.getUsedWords());
+        assertEquals(Arrays.asList("PETER"), Game.getUsedWords());
     }
 
     @Test
@@ -95,7 +98,7 @@ public class GameTest {
     }
 
     @Test
-    void testNotInAlphabet() {
+    void testNotInAlphabet() throws Exception {
         game.setWord("Jozsi");
         assertThrows(IllegalArgumentException.class,()->game.makeGuess("ó"));
     }
