@@ -14,9 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-
+@Slf4j
 public class LauncherController {
     ObservableList<String> themes=FXCollections.observableArrayList("names");
     @FXML
@@ -40,10 +41,11 @@ public class LauncherController {
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+            log.info("Username is set to {}, loading game scene.",nicknameTextfield.getText());
         }
     }
 
-    public void initThemes(MouseEvent mouseEvent) {
+    private void initThemes(MouseEvent mouseEvent) {
         choice.setItems(themes);
         choice.setValue("names");
     }

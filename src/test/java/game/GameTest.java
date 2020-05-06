@@ -1,5 +1,7 @@
 package game;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,49 +10,55 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
-    @Test
-    void testEncryptedWord() throws Exception {
-        Game game=new Game("Aron");
-        assertEquals("____",game.getEncryptedWord());
+    private  Game game;
+    @BeforeEach
+    void inicializeGame() throws Exception {
+        game=new Game();
+    }
+
+    @AfterEach
+    void resetGame(){
         Game.resetGame();
+    }
+    @Test
+    void testEncryptedWord() {
+        game.setWord("Aron");
+        assertEquals("____",game.getEncryptedWord());
     }
 
     @Test
     void testMadeACorrectGuess() throws Exception {
-        Game game=new Game("anett");
+        game.setWord("Anett");
         assertTrue(game.makeGuess("n"));
         assertEquals(100,game.getScore());
         assertEquals("_N___",game.getEncryptedWord());
         assertEquals(0,game.getCountFault());
-        Game.resetGame();
     }
 
     @Test
     void testLetterAlreadyUsed() throws Exception {
-        Game games=new Game("ANNA");
-        assertTrue(games.makeGuess("A"));
-        assertTrue(games.checkIsInAlphabet('A'));
-        assertEquals(200,games.getScore());
-        assertEquals("A__A",games.getEncryptedWord());
-        assertEquals(0,games.getCountFault());
-        assertThrows(Exception.class,()->games.makeGuess("A"));
-        assertEquals(0,games.getCountFault());
-        Game.resetGame();
+        game.setWord("ANNA");
+        assertTrue(game.makeGuess("A"));
+        assertTrue(game.checkIsInAlphabet('A'));
+        assertEquals(200,game.getScore());
+        assertEquals("A__A",game.getEncryptedWord());
+        assertEquals(0,game.getCountFault());
+        assertThrows(Exception.class,()->game.makeGuess("A"));
+        assertEquals(0,game.getCountFault());
     }
 
     @Test
     void testWrongGuess() throws Exception {
-        Game game=new Game("Aron");
+        game.setWord("Aron");
         assertFalse(game.makeGuess("l"));
         assertEquals(1,game.getCountFault());
         assertEquals(0,game.getScore());
         assertEquals("____",game.getEncryptedWord());
-        Game.resetGame();
     }
 
     @Test
     void testSolvedWord() throws Exception {
-        Game game=new Game("Pantheon");
+        game.setWord("Pantheon");
         assertTrue(game.makeGuess("p"));
         assertTrue(game.makeGuess("A"));
         assertTrue(game.makeGuess("n"));
@@ -61,19 +69,17 @@ public class GameTest {
         assertTrue(game.isSolvedWord());
         assertEquals(0,game.getCountFault());
         assertEquals(800,game.getScore());
-        Game.resetGame();
     }
 
     @Test
-    void testUsedWord() throws Exception {
-        Game game=new Game("Peter");
+    void testUsedWord()  {
+        game.setWord("Peter");
         assertEquals(Arrays.asList("Peter"),game.getUsedWords());
-        Game.resetGame();
     }
 
     @Test
     void testLoseGame() throws Exception {
-        Game game=new Game("Szabina");
+        game.setWord("Szabina");
         assertFalse(game.makeGuess("p"));
         assertFalse(game.makeGuess("k"));
         assertFalse(game.makeGuess("l"));
@@ -85,15 +91,13 @@ public class GameTest {
         assertFalse(game.makeGuess("v"));
         assertEquals(9,game.getCountFault());
         assertEquals(GameState.LOSE,Game.getGameState());
-        Game.resetGame();
 
     }
 
     @Test
-    void testNotInAlphabet() throws Exception {
-        Game game=new Game("Jozsi");
+    void testNotInAlphabet() {
+        game.setWord("Jozsi");
         assertThrows(IllegalArgumentException.class,()->game.makeGuess("ó"));
-        Game.resetGame();
     }
 
 }

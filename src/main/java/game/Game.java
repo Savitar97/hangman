@@ -38,13 +38,14 @@ public class Game {
     public Game(String w) throws Exception {
         usedLetters=new ArrayList<>();
         w.toUpperCase();
-        if(!usedWords.contains(w)){
-            usedWords.add(w);
-            setWord(w);
-            encryptedWord = setEncryptedWord();
-        }
-        else {
-            throw new Exception("Already used word!");
+        if (gameState==GameState.RUNNING) {
+            if (!usedWords.contains(w)) {
+                usedWords.add(w);
+                setWord(w);
+                encryptedWord = setEncryptedWord();
+            } else {
+                throw new Exception("Already used word!");
+            }
         }
     }
 
