@@ -4,15 +4,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
     private  Game game;
     @BeforeEach
-    void inicializeGame() throws Exception {
+    void initializeGame() throws Exception {
         game=new Game();
     }
 
@@ -77,7 +76,7 @@ public class GameTest {
     @Test
     void testUsedWord() throws Exception {
         game.setWord("Peter");
-        assertEquals(Arrays.asList("PETER"), Game.getUsedWords());
+        assertEquals(Collections.singletonList("PETER"), Game.getUsedWords());
     }
 
     @Test
