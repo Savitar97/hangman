@@ -8,8 +8,14 @@
             <property name="javax.persistence.jdbc.user" value="SPXGJLckYb" />
             <property name="javax.persistence.jdbc.password" value="S7puBjFFfe" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.schema-generation.scripts.action" value="create"/>
+            <property name="javax.persistence.schema-generation.scripts.create-target" value="./create.sql"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="./drop.sql"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
         </properties>
     </persistence-unit>
 
